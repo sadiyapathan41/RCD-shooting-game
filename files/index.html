@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEADZONE — FPS Survival</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       START MENU OVERLAY
+  ══════════════════════════════════════════ -->
+  <div id="start-menu">
+    <div class="menu-bg-grid"></div>
+    <div class="menu-content">
+      <div class="logo-wrapper">
+        <div class="logo-glitch" data-text="DEADZONE">DEADZONE</div>
+        <div class="logo-sub">SURVIVAL SHOOTER</div>
+      </div>
+      <div class="menu-stats-row">
+        <div class="stat-pill">🎮 FPS</div>
+        <div class="stat-pill">💀 Survival</div>
+        <div class="stat-pill">🌊 Wave Mode</div>
+      </div>
+      <div class="controls-grid">
+        <div class="ctrl-item"><kbd>W A S D</kbd><span>Move</span></div>
+        <div class="ctrl-item"><kbd>SPACE</kbd><span>Jump</span></div>
+        <div class="ctrl-item"><kbd>LMB</kbd><span>Shoot</span></div>
+        <div class="ctrl-item"><kbd>R</kbd><span>Reload</span></div>
+        <div class="ctrl-item"><kbd>MOUSE</kbd><span>Aim</span></div>
+        <div class="ctrl-item"><kbd>ESC</kbd><span>Pause</span></div>
+      </div>
+      <button id="btn-start" class="btn-primary">
+        <span class="btn-icon">▶</span> ENTER DEADZONE
+      </button>
+      <p class="warning-text">⚠ Click the button to lock mouse cursor for FPS controls</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       GAME OVER OVERLAY
+  ══════════════════════════════════════════ -->
+  <div id="game-over" class="hidden">
+    <div class="go-content">
+      <div class="go-title">YOU DIED</div>
+      <div class="go-stats">
+        <div class="go-stat"><span class="go-label">WAVE REACHED</span><span id="go-wave">1</span></div>
+        <div class="go-stat"><span class="go-label">KILLS</span><span id="go-kills">0</span></div>
+        <div class="go-stat"><span class="go-label">ACCURACY</span><span id="go-acc">0%</span></div>
+      </div>
+      <button id="btn-restart" class="btn-primary">↺ PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PAUSE MENU
+  ══════════════════════════════════════════ -->
+  <div id="pause-menu" class="hidden">
+    <div class="pause-content">
+      <div class="pause-title">PAUSED</div>
+      <button id="btn-resume" class="btn-secondary">▶ RESUME</button>
+      <button id="btn-menu" class="btn-secondary">⌂ MAIN MENU</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       HUD (Heads-Up Display)
+  ══════════════════════════════════════════ -->
+  <div id="hud" class="hidden">
+
+    <!-- Crosshair -->
+    <div id="crosshair">
+      <div class="ch-line ch-top"></div>
+      <div class="ch-line ch-bottom"></div>
+      <div class="ch-line ch-left"></div>
+      <div class="ch-line ch-right"></div>
+      <div class="ch-dot"></div>
+    </div>
+
+    <!-- Top bar -->
+    <div id="hud-top">
+      <div id="wave-display">
+        <span class="hud-label">WAVE</span>
+        <span id="wave-num">1</span>
+      </div>
+      <div id="score-display">
+        <span class="hud-label">KILLS</span>
+        <span id="score-num">0</span>
+      </div>
+      <div id="enemy-display">
+        <span class="hud-label">ENEMIES</span>
+        <span id="enemy-num">0</span>
+      </div>
+    </div>
+
+    <!-- Health bar -->
+    <div id="health-bar-wrap">
+      <div class="hud-label-row">
+        <span class="hud-label">❤ HEALTH</span>
+        <span id="hp-num">100</span>
+      </div>
+      <div id="health-bar-bg">
+        <div id="health-bar-fill"></div>
+      </div>
+    </div>
+
+    <!-- Ammo display -->
+    <div id="ammo-display">
+      <span id="ammo-current">30</span>
+      <span class="ammo-sep">/</span>
+      <span id="ammo-reserve">90</span>
+      <div id="reload-bar-wrap" class="hidden">
+        <div class="hud-label">RELOADING…</div>
+        <div id="reload-bar-bg"><div id="reload-bar-fill"></div></div>
+      </div>
+    </div>
+
+    <!-- Wave announcement -->
+    <div id="wave-announce" class="hidden">
+      <div id="wave-announce-text"></div>
+    </div>
+
+    <!-- Hit marker -->
+    <div id="hit-marker" class="hidden">✕</div>
+
+    <!-- Kill feed -->
+    <div id="kill-feed"></div>
+
+    <!-- Pickup notification -->
+    <div id="pickup-notif" class="hidden"></div>
+
+    <!-- Damage vignette -->
+    <div id="damage-vignette" class="hidden"></div>
+
+  </div>
+
+  <!-- Three.js canvas -->
+  <canvas id="game-canvas"></canvas>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
